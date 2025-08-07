@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRTC Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    video { width: 100%; max-width: 800px; border: 1px solid #ccc; }
+    button { padding: 10px; margin: 10px 0; cursor: pointer; }
+    .status { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>WebRTC Test - WHEP</h1>
+  <video id="videoElement" controls autoplay playsinline></video>
+  <div>
+    <button id="startButton">开始播放</button>
+    <button id="stopButton">停止播放</button>
+  </div>
+  <div class="status" id="statusMessage"></div>
+
+  <script>
+    // 配置参数
+    const serverIP = '192.168.1.100';
+    const streamName = 'my_camera';
+    const whepEndpoint = `http://${serverIP}:8889/${streamName}/whep`;
+    
+    let peerConnection = null;
+    const videoElement = document.getElementById('videoElement');
+    const statusMessage = document.getElementById('statusMessage');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    
+    // 开始播放按钮事件
+    startButton.addEventListener('click', startPlaying);
+    stopButton.addEventListener('click', stopPlaying);
+    
+    // 更新状态函数
+    function updateStatus(state, message) {
+      statusMessage.textContent = message;
+      console.log(`WebRTC状态: ${state} - ${message}`);
+    }
+    
+    // 开始播放函数
+    async function startPlaying() {
+      try {
+        updateStatus('connecting', '正在连接...');
+        
+        // 创建 RTCPeerConnection
+        const configuration = {
+          iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+        };
+        
+        peerConnection = new RTCPeerConnection(configuration);
+        
+        // 处理远程流
+        peerConnection.ontrack = (event) => {
+          if (event.streams && event.streams[0]) {
+            videoElement.srcObject = event.streams[0];
+            updateStatus('connected', '已连接，正在播放视频流');
+          }
+        };
+        
+        // 处理ICE连接状态变化
+        peerConnection.oniceconnectionstatechange = () => {
+          console.log('ICE连接状态:', peerConnection.iceConnectionState);
+          
+          if (peerConnection.iceConnectionState === 'disconnected' || 
+              peerConnection.iceConnectionState === 'failed' || 
+              peerConnection.iceConnectionState === 'closed') {
+            updateStatus('error', `ICE连接失败: ${peerConnection.iceConnectionState}`);
+            stopPlaying();
+          }
+        };
+        
+        // 处理连接状态变化
+        peerConnection.onconnectionstatechange = () => {
+          console.log('连接状态:', peerConnection.connectionState);
+          
+          if (peerConnection.connectionState === 'failed') {
+            updateStatus('error', `连接失败: ${peerConnection.connectionState}`);
+            stopPlaying();
+          }
+        };
+        
+        // 创建 SDP offer
+        const offer = await peerConnection.createOffer({
+          offerToReceiveAudio: true,
+          offerToReceiveVideo: true
+        });
+        
+        await peerConnection.setLocalDescription(offer);
+        
+        // 发送 offer 到 WHEP 端点
+        const response = await fetch(whepEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/sdp'
+          },
+          body: peerConnection.localDescription.sdp
+        });
+        
+        if (!response.ok) {
+          throw new Error(`服务器返回错误: ${response.status} ${response.statusText}`);
+        }
+        
+        // 获取 SDP answer
+        const answerSDP = await response.text();
+        await peerConnection.setRemoteDescription({
+          type: 'answer',
+          sdp: answerSDP
+        });
+        
+        updateStatus('connecting', '连接成功');
+      } catch (error) {
+        console.error('连接错误:', error);
+        updateStatus('error', `连接失败: ${error.message}`);
+        stopPlaying();
+      }
+    }
+    
+    // 停止播放函数
+    function stopPlaying() {
+      if (peerConnection) {
+        peerConnection.close();
+        peerConnection = null;
+      }
+      
+      if (videoElement.srcObject) {
+        const tracks = videoElement.srcObject.getTracks();
+        tracks.forEach(track => track.stop());
+        videoElement.srcObject = null;
+      }
+      
+      updateStatus('disconnected', '已断开连接');
+    }
+  </script>
+</body>
+</html>

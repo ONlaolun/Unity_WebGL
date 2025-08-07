@@ -1,0 +1,12 @@
+1.没有监控视频源，先去vlc设置一个，使用RTSP
+2.打开mediamtx文件夹，双击mediamtx.exe（yaml源文件可以设置RTSP路径，这个是一个RTSP转WebRTC服务器）
+3.使用 Python 开启本地服务器
+
+使用cmd cd 路径/到/你的/builds/文件夹里面
+python -m http.server 8000
+
+然后在浏览器中访问：
+http://localhost:8000
+
+注：test.html只是一个测试网页，测试推流正不正常
+
