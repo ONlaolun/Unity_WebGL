@@ -732,7 +732,7 @@ pathDefaults:
 paths:
   # example:
   my_camera:
-    source: rtsp://192.168.1.100:8554/test
+    source: rtsp://10.199.0.241:8554/test
     sourceOnDemand: yes
 
   # Settings under path "all_others" are applied to all paths that

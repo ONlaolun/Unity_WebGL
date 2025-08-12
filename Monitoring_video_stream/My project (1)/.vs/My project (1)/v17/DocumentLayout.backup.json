@@ -1,14 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Unity_develop\\My project (1)\\",
+  "WorkspaceRootPath": "D:\\work_develop\\Unity_WebGL\\Monitoring_video_stream\\My project (1)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|d:\\unity_develop\\my project (1)\\assets\\webglwebrtcreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|d:\\work_develop\\unity_webgl\\monitoring_video_stream\\my project (1)\\assets\\webglwebrtcreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E1CE1FEE-67BE-6533-73AA-CC578BE80DCD}|Assembly-CSharp.csproj|solutionrelative:assets\\webglwebrtcreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity_develop\\My project (1)\\Assets\\WebRTCController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\WebRTCController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity_develop\\My project (1)\\Assets\\WebRTCController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,11 +23,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "WebGLWebRTCReceiver.cs",
-              "DocumentMoniker": "D:\\Unity_develop\\My project (1)\\Assets\\WebGLWebRTCReceiver.cs",
+              "DocumentMoniker": "D:\\work_develop\\Unity_WebGL\\Monitoring_video_stream\\My project (1)\\Assets\\WebGLWebRTCReceiver.cs",
               "RelativeDocumentMoniker": "Assets\\WebGLWebRTCReceiver.cs",
-              "ToolTip": "D:\\Unity_develop\\My project (1)\\Assets\\WebGLWebRTCReceiver.cs",
+              "ToolTip": "D:\\work_develop\\Unity_WebGL\\Monitoring_video_stream\\My project (1)\\Assets\\WebGLWebRTCReceiver.cs",
               "RelativeToolTip": "Assets\\WebGLWebRTCReceiver.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAQwEcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T06:09:05.307Z",
               "EditorCaption": ""
@@ -38,9 +37,9 @@
               "DocumentIndex": 1,
               "Title": "WebRTCController.cs",
               "DocumentMoniker": "D:\\Unity_develop\\My project (1)\\Assets\\WebRTCController.cs",
-              "RelativeDocumentMoniker": "Assets\\WebRTCController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Unity_develop\\My project (1)\\Assets\\WebRTCController.cs",
               "ToolTip": "D:\\Unity_develop\\My project (1)\\Assets\\WebRTCController.cs",
-              "RelativeToolTip": "Assets\\WebRTCController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\Unity_develop\\My project (1)\\Assets\\WebRTCController.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAgwJUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T05:14:33.577Z"

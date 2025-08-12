@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawImage: {fileID: 1132434626}
-  videoWidth: 640
-  videoHeight: 480
+  videoWidth: 1920
+  videoHeight: 1080
   videoElementId: unity_webrtc_video
-  whepUrl: http://192.168.1.100:8889/my_camera/whep
+  whepUrl: http://10.199.0.241:8889/my_camera/whep
 --- !u!4 &239710519
 Transform:
   m_ObjectHideFlags: 0

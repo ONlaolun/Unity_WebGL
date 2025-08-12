@@ -10,7 +10,7 @@ public class WebGLWebRTCReceiver : MonoBehaviour
     public int videoWidth = 1920;
     public int videoHeight = 1080;
     public string videoElementId = "unity_webrtc_video";
-    public string whepUrl = "http://192.168.1.100:8889/my_camera/whep"; // Ìæ»»ÎªÄãµÄÊµ¼ÊWHEPµØÖ·
+    public string whepUrl = "http://10.199.0.241:8889/my_camera/whep"; // æ›¿æ¢ä¸ºå®é™…çš„ WHEP åœ°å€
 
     private Texture2D videoTexture;
     private byte[] pixelBuffer;
@@ -45,10 +45,10 @@ public class WebGLWebRTCReceiver : MonoBehaviour
 #endif
     }
 
-    // JSÍ¨ÖªUnityÊÓÆµÁ÷ÒÑ×¼±¸ºÃ
+    // JS é€šçŸ¥ Unity è§†é¢‘æµå·²å‡†å¤‡å¥½
     public void OnWebRTCReady(string videoId)
     {
-        Debug.Log("WebRTCÊÓÆµÁ÷ÒÑ×¼±¸ºÃ: " + videoId);
+        Debug.Log("WebRTC è§†é¢‘å·²å‡†å¤‡å¥½:  " + videoId);
     }
 
     void Update()
@@ -61,15 +61,15 @@ public class WebGLWebRTCReceiver : MonoBehaviour
         {
             videoTexture.LoadRawTextureData(pixelBuffer);
             videoTexture.Apply();
-            // ¼Óµ÷ÊÔÈÕÖ¾
-            if (Time.frameCount % 60 == 0) // Ã¿60Ö¡Êä³öÒ»´Î
+            // æ¯ 60 å¸§è¾“å‡ºä¸€æ¬¡æ—¥å¿—
+            if (Time.frameCount % 60 == 0) 
             {
                 Debug.Log("Video frame updated successfully");
             }
         }
         else
         {
-            // ¼Óµ÷ÊÔÈÕÖ¾
+            // æ¯ 60 å¸§è¾“å‡ºä¸€æ¬¡æ—¥å¿—
             if (Time.frameCount % 60 == 0)
             {
                 Debug.Log("GetVideoFrame returned 0, video not ready");
